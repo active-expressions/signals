@@ -1,0 +1,13 @@
+{
+  "plugins": [
+    "aexpr-source-transformation"
+    //"array-includes",
+    //"transform-class-properties",
+    //"transform-runtime"
+  ],
+  "presets": [
+    "es2015",
+    "stage-0"
+  ],
+  auxiliaryCommentBefore: 'istanbul ignore next'
+}
