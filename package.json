@@ -93,7 +93,7 @@
   },
   "dependencies": {
     "aexpr-source-transformation-propagation": "^1.5.0",
-    "babel-plugin-aexpr-source-transformation": "^2.3.0",
+    "babel-plugin-aexpr-source-transformation": "^2.3.1",
     "stack-es2015-modules": "^1.1.0"
   }
 }

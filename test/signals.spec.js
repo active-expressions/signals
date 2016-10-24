@@ -7,8 +7,7 @@ describe('Signal Logic', function() {
     it('one simple dataflow', () => {
         let a = 0;
         let s = aexpr(() => a)
-            // TODO: weird issue prevents us from using a parameter for the .onChanged callback
-            .onChange(() => s = a)
+            .onChange(val => s = val)
             .getCurrentValue();
 
         expect(s).to.equal(0);
@@ -24,11 +23,11 @@ describe('Signal Logic', function() {
             spy = sinon.spy();
 
         let b = aexpr(() => a + 2)
-            .onChange(() => b = a + 2)
+            .onChange(val => b = val)
             .getCurrentValue();
 
         let c = aexpr(() => b + 2)
-            .onChange(() => c = b + 2)
+            .onChange(val => c = val)
             .getCurrentValue();
 
         expect(b).to.equal(a + 2);
@@ -43,13 +42,13 @@ describe('Signal Logic', function() {
     it('shows the glitch problem', () => {
         let a = 0;
         let b = aexpr(() => a + 1)
-            .onChange(() => b = a + 1)
+            .onChange(val => b = val)
             .getCurrentValue();
         let c = aexpr(() => a - 1)
-            .onChange(() => c = a - 1)
+            .onChange(val => c = val)
             .getCurrentValue();
         let alwaysTrue = aexpr(() => b > c)
-            .onChange(() => alwaysTrue = b > c)
+            .onChange(val => alwaysTrue = val)
             .getCurrentValue();
         let spy = sinon.spy();
         aexpr(() => alwaysTrue).onChange(spy);
